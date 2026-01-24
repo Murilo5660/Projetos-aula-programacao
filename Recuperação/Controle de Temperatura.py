@@ -1,10 +1,9 @@
-temperatura_atual = float(input("Digite a temperatura em °C: "))
-
-if temperatura_atual < 15:
+temperatura = float(input('Digite a temperatura em Celsius (Ex.: 23.7): '))
+if temperatura < 15:
     print("Temperatura Baixa - Ligar Aquecedor")
-
-elif temperatura_atual >= 15 and temperatura_atual <= 30:
+elif temperatura >= 15 and temperatura >= 30:
     print("Temperatura Ideal - Sistema em Espera")
-
-elif temperatura_atual > 30:
+elif temperatura > 30:
     print("Temperatura Alta - Ligar Exaustores")
+else:
+    print('Temperatura não aceita.')
