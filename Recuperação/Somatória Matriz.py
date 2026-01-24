@@ -1,12 +1,18 @@
-matriz = [
- [9 , 8 , 3],
- [1 , 6 , 4],
- [2 , 7 , 5]
-]
-soma_total = 0
+matriz = []
+print('\n\nDigite os valores da matriz 3x3: ')
+for i in range(3):
+    linha = []
+    for j in range(3):
+        valor = int(input(f'Digite o valor para a posição [{i}][{j}]: '))
+        linha.append(valor)
+    matriz.append(linha)
 
+print('\nMatriz digitada:')
 for linha in matriz:
-    for elemento in linha:
-        soma_total += elemento
+    print(linha)
 
-print(f"A soma total é: {soma_total}")
+diagonais = 0
+for i in range(3):
+    diagonais += matriz[i][i]
+
+print(f'Soma da diagonal principal: {diagonais}')
