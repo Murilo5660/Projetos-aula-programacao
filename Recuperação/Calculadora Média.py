@@ -1,3 +1,6 @@
+notas = []
+while True:
+    print('\n||| MENU |||')
     print('1-Incerir nova nota')
     print('2-Ver notas lançadas')
     print('3-Calcular mádia final')
@@ -28,4 +31,3 @@
     
     else:
         print('Opção inválida! Digite uma opção exitente(Ex.:1,2,3,0).')
-    
