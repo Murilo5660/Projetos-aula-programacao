@@ -20,3 +20,9 @@ with open("Meu_Diário.txt", "a") as bloco:
     bloco.write("Estou aprendendo a manipular arquivos e é muito útil.\n")
 
 print("Nova anotação no Meu Diário!")
+
+sentimento = input("Como você está se sentindo hoje? ")
+with open("Meu_Dário.txt","a") as arquivo:
+    arquivo.write(sentimento + "\n")
+print("Anotação salva!")
+
