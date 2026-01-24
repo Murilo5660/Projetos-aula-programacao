@@ -1,3 +1,4 @@
-arquivo = open ("perfil.txt", "r")
-conteudo_completo = arquivo.read()
-print(conteudo_completo)
+with open("perfil.txt","r") as arquivo:
+    conteudo_do_perfil = arquivo.read()
+print("--- Conteúdo do Perfil ---")
+print(conteudo_do_perfil)
