@@ -1,7 +1,10 @@
-num = int(input("Digite um número inteiro: "))
+N = int(input('\nDigite a quantidade de termos da sequência de Fibonacci: '))
+a = 0
+b = 1
 
-a, b = 0, 1
-
-for i in range(num):
-    print(a, end=" ")
-    a, b = b, a + b
+print("\nSequência de Fibonacci:")
+for i in range(N):
+    print(a, end=' ')
+    proximo = a + b
+    a = b
+    b = proximo
