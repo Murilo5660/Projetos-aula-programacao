@@ -1,28 +1,31 @@
-notas = []
+    print('1-Incerir nova nota')
+    print('2-Ver notas lançadas')
+    print('3-Calcular mádia final')
+    print('0-Sair')
+    op = int(input('Escolha uma opção: '))
 
-while True:
-    opcoes = input("Escolha a opção desejada: \n1) Inserir uma nova nota. \n2) Ver as notas lançadas. \n3) Calcular a média final. \nOpção: ")
+    if op == 1:
+        nota = float(input('Digite a nova nota: '))
+        notas.append(nota)
+        print('Noata adicionada com sucesso!')
     
-    if opcoes == "1":
-        inserir_notas = float(input("Digite as notas que deseja inserir: "))
-        notas.append(inserir_notas)
+    elif op == 2:
+        if len(notas) == 0:
+            print('Nenhuma nota foi lançada ainda.')
+        else:
+            print(f'Notas lançadas: {notas}')
     
-    elif opcoes == "2":
-        print(f"Notas presentes na lista: {notas}")
-
-    elif opcoes == "3":
-        
-         if len(notas) == 0:
-             print("Nenhum elemento na lista, insira algumas notas primeiro.")
-         
-         else:   
-            soma = sum(notas)
-            media = soma / len(notas)
-            print(f"A média das notas é: {media}")
+    elif op == 3:
+        if len(notas) == 0:
+            print('não há notas para calcular a média.')
+        else:
+            med = sum(notas) / len(notas)
+            print(f'Média final: {med:.2f}')
     
-    elif opcoes == "0":
-         print("Encerrando o programa...")
-         break
+    elif op == 0:
+        print('Programa encerrado.')
+        break
     
     else:
-        print("Opção inválida, tente novamente.")
+        print('Opção inválida! Digite uma opção exitente(Ex.:1,2,3,0).')
+    
