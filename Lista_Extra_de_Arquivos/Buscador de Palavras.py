@@ -1,14 +1,8 @@
-palavra = input("Me diga uma palavra que você quer encontrar: ").lower()
-nome_arquivo = input("Qual o nome do arquivo? ")
-
-try:
-    arquivo = open(nome_arquivo, "r")
-    texto = arquivo.read().lower()
-    arquivo.close()
-
-    palavras = texto.split()
-    quantidade = palavras.count(palavra)
-
-    print(f"A palavra {palavra} aparece {quantidade} vezes no arquivo {nome_arquivo}.")
-except FileNotFoundError:
-    print("Não consegui encontrar esse arquivo. Você digitou corretamente ?")
+# Exercício 9 - Buscador de Palavras
+print("\n--- Buscador de Palavras ---")
+nome_arquivo = input("Digite o nome do arquivo |ex: tarefa.txt|: ")
+palavra = input("Digite a palavra que deseja buscar: ")
+with open(nome_arquivo,"r") as arquivo:
+    conteudo = arquivo.read()
+quantidade = conteudo.lower().count(palavra.lower())
+print(f"A palavra '{palavra}' aparece {quantidade} vezes no arquivo '{nome_arquivo}'")
