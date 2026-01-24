@@ -1,30 +1,45 @@
-print("Agenda de contatos, opções: \n1) Adicionar um novo contato(nome e telefone, exemplo: \nNome: Murilo \nTelefone: 98764-3210\n2) Listar todos os contatos salvos.\n3) Buscar um contato atrasvés do nome.")
-opcoes = input("Escolha uma das opções que deseja: ")
+print("\n--- Agenda de Contatos ---")
+with open("agenda.csv","w") as arquivo:
+    arquivo.write("Caio,12345-6789\n")
+    arquivo.write("André,98765-4321\n")
+    arquivo.write("Márcio,24682-4286\n")
+    arquivo.write("Henrique,13579-7531\n")
+    arquivo.write("Fernando,01000-1101\n")
 
-if opcoes == "1" or opcoes == "Adicionar contato" or opcoes == "adicionar contato" or opcoes == "add contato":
-    nome = input("Digite o nome do contato desejado: ")
-    telefone = input("Digite o telefone do contato desejado: ")
-    
-    with open("agenda.csv", "a") as arquivo:
-         arquivo.write(f"{nome}, {telefone}\n")
-    print(f"O Contato '{nome}' foi adicionado com sucesso!")
-elif opcoes == "2" or opcoes == "Listar contatos salvos" or opcoes == "listar contatos salvos" or opcoes == "Listar contatos" or opcoes == "listar contatos":
-     try:
-          with open("agenda.csv", "r") as arquivo:
-               conteudo_salvo = arquivo.readlines()
-               if len(conteudo_salvo) == 0:
-                 print("A agenda está vazia.")
-               else:
-                    print("\nContatos Salvos / cadastrados: ")
-                    for linha in conteudo_salvo:
-                         conteudo_completo = linha.strip()
-                         print(conteudo_completo)
-     except FileNotFoundError:
-          print("Nenhum contato encontrado.")
-elif opcoes == "3" or opcoes == "Buscar um contato" or opcoes == "buscar um contato" or opcoes == "Buscar contato" or opcoes == "buscar contato":
-     nome_p_buscar = input("Digite o nome que desejado: ")
-     with open("agenda.csv","r") as arquivo:
-          conteudo_salvo = arquivo.read()
-          print(f"O contato {nome_p_buscar} é: {nome_p_buscar in conteudo_salvo}")
-else: 
-     print("Opção inválida, tente novamente.")
+print("1 = Adicionar contato")
+print("2 = Listar contatos")
+print("3 = Buscar contato")
+opcao = input("Escolha uma opção: ")
+
+if opcao == "1":
+    nome = input("Digite o nome do contato: ")
+    telefone = input("Digite o telefone do contato: ")
+    with open("agenda.csv","a") as arquivo:
+        arquivo.write(f"{nome},{telefone}\n")
+    print(f"Contato '{nome}' adicionado com sucesso!")
+
+elif opcao == "2":
+    with open("agenda.csv","r") as arquivo:
+        linhas = arquivo.readlines()
+    print("\nContatos cadastrados:")
+    for linha in linhas:
+        nome, telefone = linha.strip().split(",")
+        print(f" - {nome} | {telefone}")
+
+elif opcao == "3":
+    busca = input("Digite o nome do contato para buscar: ").lower()
+    with open("agenda.csv","r") as arquivo:
+        linhas = arquivo.readlines()
+
+    contador = 0
+    for linha in linhas:
+        nome, telefone = linha.strip().split(",")
+        if busca in nome.lower():
+            print(f" - {nome} | {telefone}")
+            contador += 1
+        
+    if contador == 0:
+        print(f"Nenhum contato com o nome '{busca}' encontrado.")
+
+else:
+    print("Opção inválida! Escolha |1, 2 ou 3|")
