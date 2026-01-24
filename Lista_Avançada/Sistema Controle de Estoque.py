@@ -1,21 +1,34 @@
-nome_produto = []
-preco_produto = []
 
 while True:
-    opcoes = input("Digite a opção desejada: \n1) Adicionar um produto e o preço dele. \n2) Listar os produtos. \n3) Calcular todos os preços. \nCaso deseja parar o programa digite 0. \n")
-    if opcoes == "1":
-        nome = input("Digite o nome do produto que deseja adiconar: ")
-        preco = float(input("Digite o preço do produto: "))
-        nome_produto.append(nome)
-        preco_produto.append(preco)
+    print('\n=== MENU DO ESTOQUE ===')
+    print('1 - Adicionar produto')
+    print('2 - Listar produtos')
+    print('3 - Valor total do estoque')
+    print('0 - Sair')
 
-    elif opcoes == "2": 
-        print(f"Produtos das listas: {nome_produto} preço: {preco_produto}")
-    
-    elif opcoes == "3":
-        soma = sum(preco_produto)
-        print(f"A soma dos produtos é: R$ {soma}")
-    elif opcoes == "0":
+    op = input('Escolha uma opção: ')
+
+    if op == '1':
+        nome = input('Nome do produto: ')
+        preco = float(input('Preço do produto: '))
+        produtos.append({'nome': nome, 'preco': preco})
+        print('Produto adicionado!')
+
+    elif op == '2':
+        if not produtos:
+            print('\nNenhum produto cadastradoo! Use a opção 1 para adicionar novos produtos.')
+        else:
+            print('\nProdutos cadastrados:')
+            for p in produtos:
+                print(f"- {p['nome']} : R$ {p['preco']:.2f}")
+
+    elif op == '3':
+        total = sum(p['preco'] for p in produtos)
+        print(f'Valor total do estoque: R$ {total:.2f}')
+
+    elif op == '0':
+        print('Programa encerrado.')
         break
+
     else:
-        print("Opção inválida, tente novamente.")
+        print('Opção inválida! Tente novamente.')
